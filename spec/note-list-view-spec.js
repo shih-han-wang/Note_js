@@ -3,7 +3,7 @@ function noteListViewTests(){
   view.addNote("Favourite food: pesto")
   view.addNote("Favourite drink: seltzer")
 
-  assert.isTrue(view.represent() === "<ul><li><div>Favourite food: pesto</div></li><li><div>Favourite drink: seltzer</div></li></ul>", "returns a string of HTML that represents the note list mode");
+  assert.isTrue(view.show() === "<ul><li><div>Favourite food: pesto</div></li><li><div>Favourite drink: seltzer</div></li></ul>", "returns a string of HTML that represents the note list mode");
 }
 
 noteListViewTests();

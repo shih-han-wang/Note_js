@@ -8,20 +8,8 @@
     this.noteList.createNote(string)
   };
 
-  NoteListView.prototype.listLength = function () {
-    return this.noteList.list().length
-  };
-
-  NoteListView.prototype.noteView = function (index) {
-    return this.noteList.list()[index].view()
-  };
-
-  NoteListView.prototype.represent = function () {
-  var result = ""
-  for (var i = 0; i < this.listLength(); i++){
-    result += "<li><div>" + this.noteView(i) + "</div></li>"
-  }
-  return "<ul>" + result + "</ul>"
+  NoteListView.prototype.show = function () {
+    return "<ul><li><div>" + this.noteList.list().join("</div></li><li><div>") + "</div></li></ul>"
   };
 
   exports.NoteListView = NoteListView;
