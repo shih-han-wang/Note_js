@@ -1,6 +1,9 @@
 function noteTests(){
-  var note = new Note("My favourite language is JavaScript");
-  assert.isTrue(note.view() === "My favourite language is JavaScript", "test for note stores string");
+  var note = new Note("My favourite language is JavaScript", 1);
+
+  assert.isTrue(
+    "Note: Test for note stores string: ",
+    note.text() === "My favourite language is JavaScript");
 }
 
 noteTests();

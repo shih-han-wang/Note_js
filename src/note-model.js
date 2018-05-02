@@ -1,12 +1,19 @@
 (function(exports){
 
-  function Note(string){
-    this.text = string;
+  function Note(string, id){
+    this.string = string;
+    this.id = id;
   }
 
-  Note.prototype.view = function () {
-    return this.text;
-  };
+  Note.prototype = {
+    text: function(){
+      return this.string;
+    },
+
+    id: function(){
+      return this.id;
+    }
+  }
 
   exports.Note = Note;
 

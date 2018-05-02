@@ -1,15 +1,18 @@
 (function(exports){
 
-  function NoteListView(){
-    this.noteList = new NoteList()
+  function NoteListView(noteList){
+    this.noteList = noteList
   }
 
-  NoteListView.prototype.addNote = function (string) {
-    this.noteList.createNote(string)
-  };
+  NoteListView.prototype.display = function () {
+    var html = "<ul>"
 
-  NoteListView.prototype.show = function () {
-    return "<ul><li><div>" + this.noteList.list().join("</div></li><li><div>") + "</div></li></ul>"
+    this.noteList.list().forEach(function(note){
+      html += `<li><div><a href='#${note.id}'>${note.string.substring(0,20)}</a></div></li>`
+    })
+    html += "</ul>"
+
+    return html
   };
 
   exports.NoteListView = NoteListView;

@@ -1,11 +1,17 @@
 function noteListTests(){
   var list = new NoteList();
 
-  assert.isTrue(Array.isArray(list.notes), "test that noteList has an empty array of notes");
+  assert.isTrue(
+    "Note List: an empty array of notes: ",
+    Array.isArray(list.list())
+    );
 
   list.createNote("Favourite drink: seltzer")
 
-  assert.isTrue(list.notes[0] === "Favourite drink: seltzer", "test that the created note stores in the notes array");
+  assert.isTrue(
+    "Note List: created note stores in the notes array: ",
+    list.notes[0].text() === "Favourite drink: seltzer"
+    );
 }
 
 noteListTests();

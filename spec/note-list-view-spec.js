@@ -1,9 +1,14 @@
 function noteListViewTests(){
-  var view = new NoteListView()
-  view.addNote("Favourite food: pesto")
-  view.addNote("Favourite drink: seltzer")
 
-  assert.isTrue(view.show() === "<ul><li><div>Favourite food: pesto</div></li><li><div>Favourite drink: seltzer</div></li></ul>", "returns a string of HTML that represents the note list mode");
+  const noteList = new NoteList()
+  noteList.createNote("Yo!Yo!yo!")
+  noteList.createNote("Check it out!")
+  const view = new NoteListView(noteList)
+
+  assert.isTrue(
+    "List View: HTML display for notes: ",
+    view.display() === "<ul><li><div><a href='#0'>Yo!Yo!yo!</a></div></li><li><div><a href='#1'>Check it out!</a></div></li></ul>"
+);
 }
 
 noteListViewTests();
