@@ -1,37 +1,41 @@
 (function(exports){
 
-  function NoteController(){
-    this.noteList = new NoteList();
-    this.noteList.createNote("Purple amazing")
-    this.noteList.createNote("Purple amazing as well")
+  function NoteController(list = new NoteList()){
+    this.noteList = list;
+    this.noteList.createNote("this is pretty shitty")
+    this.noteList.createNote("i mean life")
     this.noteList.createNote("js is amazing")
-    this.noteList.createNote("last note is a joke")
+    this.noteList.createNote("this is a joke")
     this.noteList.createNote("this note more than 20 charrrrrrr")
-    this.notesView = new NoteListView(this.noteList);
   };
-
-
-
 
   NoteController.prototype = {
 
     getHTML: function(){
       var notes = getField("notes")
-      notes.innerHTML = this.notesView.display();
-      console.log(this.notesView.display());
+      notesHtmlUpdate(this.noteList)
     },
 
     urlChangeDisplayNote: function(){
-      var noteField = getField("note");
-      var notelist = this.noteList
+      var noteList = this.noteList;
       window.addEventListener("hashchange", function(event){
         event.preventDefault();
-        var id = getNoteID(window.location)
-        var note = notelist.getNoteById(Number(id))
-        noteField.innerHTML = new NoteView(note).display();
+        var id = getNoteID(window.location);
+        var note = noteList.getNoteById(Number(id));
+        noteHtmlUpdate(note);
       })
     },
 
+    noteSubmit: function(){
+      var noteList = this.noteList
+      getField("submit").addEventListener("submit" ,function(event){
+        event.preventDefault();
+        var newnote = getField("addnote").value
+        noteList.createNote(newnote);
+        notesHtmlUpdate(noteList);
+        textAreaReset();
+      })
+    },
 
   }
 
@@ -41,6 +45,20 @@
 
   function getField(field){
     return document.getElementById(field)
+  };
+
+  function notesHtmlUpdate(noteList){
+    var notes = getField("notes")
+    notes.innerHTML = new NoteListView(noteList).display()
+  };
+
+  function noteHtmlUpdate(singleNote){
+    var note = getField("note")
+    note.innerHTML = new NoteView(singleNote).display()
+  };
+
+  function textAreaReset(){
+    document.getElementById("addnote").value = ""
   };
 
   exports.NoteController = NoteController;
