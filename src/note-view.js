@@ -5,7 +5,7 @@
   }
 
   NoteView.prototype.display = function () {
-    return `<div>${this.note.text()}</div>`
+    return `<div>${this.note}</div>`
 
   };
 

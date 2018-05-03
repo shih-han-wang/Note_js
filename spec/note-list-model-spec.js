@@ -10,8 +10,10 @@ function noteListTests(){
 
   assert.isTrue(
     "Note List: created note stores in the notes array: ",
-    list.notes[0].text() === "Favourite drink: seltzer"
+    list.getNoteById(0) === "Favourite drink: seltzer"
     );
+
+
 }
 
 noteListTests();
