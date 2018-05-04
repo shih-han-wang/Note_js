@@ -3,10 +3,9 @@
   function NoteController(list = new NoteList()){
     this.noteList = list;
     this.noteList.createNote("this is pretty shitty")
-    this.noteList.createNote("i mean life")
-    this.noteList.createNote("js is amazing")
+    this.noteList.createNote("js amazing")
     this.noteList.createNote("this is a joke")
-    this.noteList.createNote("this note more than 20 charrrrrrr")
+    this.noteList.createNote("this note is more than 20 charrrrrrr")
   };
 
   NoteController.prototype = {
@@ -28,7 +27,7 @@
 
     noteSubmit: function(){
       var noteList = this.noteList
-      getField("submit").addEventListener("submit" ,function(event){
+      getField("submit").addEventListener("submit", function(event){
         event.preventDefault();
         var newnote = getField("addnote").value
         noteList.createNote(newnote);
