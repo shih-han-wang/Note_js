@@ -1,11 +1,13 @@
 function NoteViewTest(){
   var note = new Note("Hello bitch", 1)
-  var noteView = new NoteView(note)
+  var noteView = new NoteView(note.text())
 
   assert.isTrue(
     "Note View: HTML display for single note",
     noteView.display() === "<div>Hello bitch</div>"
+
   );
+
 }
 
 NoteViewTest();

@@ -7,7 +7,8 @@ function noteListViewTests(){
 
   assert.isTrue(
     "List View: HTML display for notes: ",
-    view.display() === "<ul><li><div><a href='#0'>Yo!Yo!yo!</a></div></li><li><div><a href='#1'>Check it out!</a></div></li></ul>"
+    view.display() ===
+    "<ul><a href='#0' id='note0' class='list-group-item list-group-item-action list-group-item-light'>Yo!Yo!yo!</a><a href='#1' id='note1' class='list-group-item list-group-item-action list-group-item-light'>Check it out!</a></ul>"
 );
 }
 
